@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}{% endblock title %}
+{% block style %}{% endblock style %}
+{% block main %}
+<h1>BMR Calculator</h1>
+<p>The <i>Basal Metabolic Rate (BMR)</i> estimates your basal metabolic rate--the amount
+    of energy expended while at rest in a neutrally temperate environment, and in a post-absorptive
+    state (meaning that the digestive system is inactive, which requires about 12 hours of fasting).
+</p>
+<h3 style="background-color: green; color: white; padding: 5px">Your Results</h3>
+<div class="bg-secondary p-4 text-light">
+<p style="font-size: 25px">Your BMR = <span class="bg-light p-2 text-success">{{bmr}}</span> Calories/day</p>
+<p style="font-size: 25px">You Need = <span class="bg-light p-2 text-success">{{activity.exercise.calory}}</span> Calories/day<small style="font-size: 10px">According to your activity</small></p>
+<p style="font-size: 25px">You should <span class="bg-light p-2 text-success">{{action}}</span> = <span class="bg-light p-2 text-success">{{results}}</span> Calories/day</p>
+</div>
+<table class="table table-inverse table-responsive">
+        <tbody>
+            <h3>Your Activity</h3>
+            <tr sytle="background-color: gray; color: white">
+                <td scope="row">{{activity.exercise.title}}</td>
+                <td>{{activity.exercise.description}}</td>
+                <td>{{activity.exercise.calory}}</td>
+            </tr>
+        </tbody>
+</table>
+
+<table class="table table-striped table-inverse table-responsive">
+    <p><b>Daily calory needs based on activity level</b></p>
+    <thead class="thead-inverse bg-success">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Calory</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for exercise in exercises %}
+            <tr>
+                <td scope="row">{{exercise.title}}</td>
+                <td>{{exercise.description}}</td>
+                <td>{{exercise.calory}}</td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+</table>
+
+
+
+{% endblock main %}
+{% block scripts %}{% endblock scripts %}
