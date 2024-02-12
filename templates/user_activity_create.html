@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{% endblock title %}
+{% block style %}{% endblock style %}
+{% block main %}
+
+    <h1>Creating Activity for <span class='text-success'>{{request.user}}</span></h1>
+<hr>
+<table class="table table-striped table-inverse table-responsive">
+    <p><b>Daily calory needs based on activity level</b></p>
+    <thead class="thead-inverse bg-success">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Calory</th>
+            <th>Select</th>
+        </tr>
+        </thead>
+        <tbody>
+            <form  method="post">
+                {% csrf_token %}
+
+                {% for exercise in exercises %}
+                <tr>
+                    <td scope="row">{{exercise.title}}</td>
+                    <td>{{exercise.description}}</td>
+                    <td>{{exercise.calory}}</td>
+                    <td><input type="radio" name="ex" value="{{exercise.id}}"></td>
+                </tr>
+                {% endfor %}
+
+                <tr>
+                    <td colspan="4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </td>
+                </tr>
+                
+
+            </form>
+
+        </tbody>
+</table>
+
+{% endblock main %}
+{% block scripts %}{% endblock scripts %}

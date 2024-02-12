@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{% endblock title %}
+{% block style %}{% endblock style %}
+{% block main %}
+
+<form method="post" action="{% url 'fd' %}">
+    {% csrf_token %}
+    <input type="date" name='date'>
+    <input type="submit" value="Show">
+</form>
+{% endblock main %}
+{% block scripts %}{% endblock scripts %}
+
+
